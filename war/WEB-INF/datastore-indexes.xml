@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datastore-indexes autoGenerate="false">
+	<datastore-index kind="MessageType" ancestor="true"
+		source="auto">
+		<property name="messageTypes_INTEGER_IDX" direction="asc" />
+	</datastore-index>
+
+	<!-- recent -->
+	<datastore-index kind="PoetryTweet" ancestor="false"
+		source="auto">
+		<property name="author" direction="asc" />
+		<property name="firstLetter" direction="asc" />
+		<property name="authoredOn" direction="desc" />
+	</datastore-index>
+
+	<datastore-index kind="PoetryTweet" ancestor="false"
+		source="manual">
+		<property name="language" direction="asc" />
+		<property name="authoredOn" direction="desc" />
+	</datastore-index>
+
+	<!-- archive -->
+	<datastore-index kind="PoetryTweet" ancestor="false"
+		source="manual">
+		<property name="language" direction="asc" />
+		<property name="authoredOn" direction="asc" />
+	</datastore-index>
+
+	<!-- cinquain -->	
+	<datastore-index kind="PoetryTweet" ancestor="false" source="manual">
+        <property name="language" direction="asc"/>
+        <property name="textLength" direction="asc"/>
+        <property name="authoredOn" direction="asc"/>
+    </datastore-index>
+    
+    <datastore-index kind="CinquainLine" ancestor="true" source="manual">
+        <property name="lines_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes> 

@@ -1,0 +1,88 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>poetryfeederServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/poetryfeeder-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>poetryfeederServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+ 
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/refresh*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+ 
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+<!-- 
+	<filter>
+		<filter-name>encoding-filter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encoding-filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>-->
+
+
+	<!--OnPositive Tools-->
+	<servlet>
+		<servlet-name>profilerConsoleServlet</servlet-name>
+		<servlet-class>com.onpositive.gae.tools.servlets.ConsoleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>profilerConsoleServlet</servlet-name>
+		<url-pattern>/appwrench/console</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SessionAuth</servlet-name>
+		<servlet-class>com.onpositive.auth.AuthServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SessionAuth</servlet-name>
+		<url-pattern>/appwrench/auth</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>baseViewerServlet</servlet-name>
+		<servlet-class>com.onpositive.gae.tools.servlets.BaseViewerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>baseViewerServlet</servlet-name>
+		<url-pattern>/appwrench/baseviewer</url-pattern>
+	</servlet-mapping>
+</web-app>

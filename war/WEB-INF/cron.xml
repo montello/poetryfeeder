@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <!--<cron>
+    <url>/refresh</url>
+    <description>Repopulate the cache every 1 minute</description>
+    <schedule>every 1 minutes</schedule>
+  </cron>
+  
+  <cron>
+    <url>/refreshCinquains</url>
+    <description>Refresh Cinquain poems</description>
+    <schedule>every 10 minutes</schedule>
+  </cron>
+  
+  <cron>
+    <url>/refreshFollowers</url>
+    <description>Refresh followers</description>
+    <schedule>every 5 minutes</schedule>
+  </cron>
+  
+--><!--  <cron>-->
+<!--    <url>/about</url>-->
+<!--    <description>keep the application alive</description>-->
+<!--    <schedule>every 1 minutes</schedule>-->
+<!--  </cron>-->
+</cronentries>

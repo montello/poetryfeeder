@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd   http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<bean id="poetryFeederManager" class="com.fraise.control.PoetryFeederManager">
+		<property name="persistenceManager" ref="poetryPersistenceManager" />
+		<property name="source" ref="poetryTweetSource" />
+		<property name="poetrySorter" ref="poetrySorter" />
+	</bean>
+
+	<bean id="poetrySorter" class="com.fraise.control.PoetrySorterImpl" />
+
+	<bean id="poetryTweetSource" class="com.fraise.source.twitter.TwitterPoetryTweetSource">
+		<property name="statusMessageTypeHandler" ref="statusMessageTypeHandler" />
+		<property name="directMessageTypeHandler" ref="directMessageTypeHandler" />
+		<property name="twitterWrapper" ref="twitterWrapper" />
+		<!--
+			<property name="mentionMessageTypeHandler"
+			ref="mentionMessageTypeHandler" />
+		-->
+	</bean>
+
+	<bean id="abstractTwitterMessageHandler" abstract="true"
+		class="com.fraise.source.twitter.AbstractTwitterMessageTypeHandler">
+		<property name="persistenceManager" ref="poetryPersistenceManager" />
+		<!--		<property name="guidGenerator" ref="guidGenerator" />-->
+	</bean>
+
+	<bean id="directMessageTypeHandler" class="com.fraise.source.twitter.DirectMessageTypeHandler"
+		parent="abstractTwitterMessageHandler">
+		<constructor-arg ref="twitterWrapper"></constructor-arg>
+	</bean>
+
+	<bean id="statusMessageTypeHandler" class="com.fraise.source.twitter.StatusMessageTypeHandler"
+		parent="abstractTwitterMessageHandler">
+		<constructor-arg ref="twitterWrapper"></constructor-arg>
+	</bean>
+
+	<!--
+		<bean id="mentionMessageTypeHandler"
+		class="com.fraise.source.twitter.MentionMessageTypeHandler"
+	-->
+	<!--		parent="abstractTwitterMessageHandler">-->
+	<!--		<constructor-arg ref="twitterWrapper"></constructor-arg>-->
+	<!--	</bean>-->
+
+	<!--
+		<bean id="guidGenerator" class="com.fraise.domain.GUIDGeneratorImpl">
+	-->
+	<!--		<constructor-arg ref="poetryPersistenceManager" />-->
+	<!--	</bean>-->
+
+	<bean id="twitterWrapper" class="com.fraise.source.twitter.TwitterWrapper">
+		<constructor-arg ref="myConsumer" />
+		<constructor-arg ref="myAccessToken" />
+	</bean>
+
+	<bean id="myConsumer" class="com.fraise.source.twitter.ApplicationToken">
+		<constructor-arg name="applicationName" value="poetryfeeder" />
+		<constructor-arg name="consumerKey" value="o7Mni3cZVXbkDupXDqK6ag" />
+		<constructor-arg name="consumerSecret"
+			value="uUrbyPxOMPmIknY2ydrIrSShlvXWBnXB3iSXxUUqVk" />
+	</bean>
+
+	<bean id="myAccessToken" class="com.fraise.source.twitter.AccountAccessToken">
+		<constructor-arg name="accountName" value="poetryfeeder"></constructor-arg>
+		<constructor-arg name="token"
+			value="51423404-C24silbhobslmrFK1sgnWeQPSU395yOfuiI8soanz" />
+		<constructor-arg name="tokenSecret"
+			value="Bi9foBXG3O5vG8BEY7JyOLOEsd0kbkSHoEfw5i28" />
+	</bean>
+
+	<bean id="poetryPersistenceManager"
+		class="com.fraise.persistence.DataStorePoetryPersistenceManager" />
+
+</beans>

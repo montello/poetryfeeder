@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+/* CSS Document poetryfeeder.com designed by cheryl gallaway www.cherylgallaway.com */
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 100%;
+	max-height: 100%;
+	background-color: #FFF5F3;
+	font-size: 15px;
+	line-height: 21px;
+	color: #00F;
+	font-family: Helvetica, Arial, sans-serif;
+	text-transform: lowercase;
+}
+
+.poem {
+	font-size: 30px;
+	line-height: 36px;
+	padding: 0;
+}
+
+
+h1,h2,h3,h4,h5 {
+	font-size: 30px;
+	line-height: 36px;
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+
+}
+
+h3 {
+	padding: 0 0 108px;
+	margin: 0;
+	font-size: 15px;
+	font-weight: normal;
+}
+
+ul,li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a:link,a:visited {
+	color: #00F;
+	text-decoration: underline;
+}
+
+a:hover,a:active {
+	color: #00F;
+	text-decoration: none;
+}
+
+div#home { 
+	padding-top: 144px;
+}
+
+div#colofon {
+	line-height: 36px;
+	margin: 0;
+}
+
+div#colofon a:link,div#colofon a:visited,div#colofon a:hover,div#colofon a:active
+	{
+	font-size: 15px;
+	font-weight: normal;
+}
+
+.meta {
+	font-size: 15px;
+	font-weight: normal;
+	line-height: 21px;
+	margin-bottom: 15px;
+	opacity: 0.2;
+	filter: alpha(opacity = 20);
+}
+
+#framecontentLeft,#framecontentRight {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 250px; /*Width of left frame div*/
+	background-color: #FFF5F3;
+
+}
+
+#framecontentRight {
+	left: auto;
+	right: 0;
+	width: 250px; /*Width of right frame div*/
+}
+
+#framecontentRight a:link,#framecontentRight a:visited,#framecontentRight a:hover,#framecontentRight a:active
+	{
+	font-size: 30px;
+	line-height: 36px;
+}
+
+#framecontentRight div.lang a:link,#framecontentRight div.lang a:visited,#framecontentRight div.lang a:hover,#framecontentRight div.lang a:active
+	{
+	font-size: 15px;
+	line-height: 21px;
+	font-weight: normal;
+}
+
+#maincontent {
+	position: absolute;
+	top: 0;
+	left: 250px; /*Set left value to WidthOfLeftFrameDiv*/
+	right: 250px; /*Set right value to WidthOfRightFrameDiv*/
+	bottom: 0;
+	min-width:250px;
+}
+
+.innertube {
+	margin: 18px;
+	/*Margins for inner DIV inside each DIV (to provide padding)*/
+}
+
+.write {
+	margin: 18px 18px 108px 18px;
+	/*Margins for inner DIV inside each DIV (to provide padding)*/
+}
+
+.innertubemain {
+	padding: 18px;
+	/*Margins for inner DIV inside each DIV (to provide padding)*/
+	border-right: 1px solid #00f;
+	border-left: 1px solid #00f;
+	min-height: 100%;
+}
+
+* html body { /*IE6 hack*/
+	padding: 0 150px 0 200px;
+	/*Set value to (0 WidthOfRightFrameDiv 0 WidthOfLeftFrameDiv)*/
+}
+
+* html #maincontent { /*IE6 hack*/
+	width: 100%;
+}
+
+div.archivepoem {
+	border-bottom: 1px solid #00f;
+	display: block;
+	float: left;
+	font-size: 15px;
+	line-height: 21px;
+	margin: 0 10px 21px 0;
+	width: 30%;
+}
+
+div.archivepoem div.meta {
+	font-size: 10px;
+	line-height: 10px;
+}
+
+ol li {
+	list-style-type: decimal;
+}
