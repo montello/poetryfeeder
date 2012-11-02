@@ -1,4 +1,4 @@
-poetryfeeder
+PoetryFeeder
 ============
 
 This application was originally developed for the 2010 International Poetry Festival, held in Rotterdam, The Netherlands, http://www.poetry.nl/
